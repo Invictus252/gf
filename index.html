@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang = "en">
+   <head>
+      <meta charset = "utf-8">
+      <title>Greylock Services Datepicker functionality</title>
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+   </head>
+
+   <body>
+      <!-- HTML -->
+      <div class="px-4 py-5 my-5 text-center">
+  <img class="d-block mx-auto mb-4" src="https://www.greylock.org/img/gfcu-logo-RGB.png" alt="" width="72" height="57">
+  <h1 class="display-5 fw-bold">Services Inquiry</h1>
+  <div class="col-lg-12 mx-auto">
+    <p class="lead mb-4">Quickly locate current, past, or future services and availibility in any of our branches.</p>
+    <div class="d-grid gap-2 d-sm-flex ">
+      <div class="input-group input-group-sm justify-content-sm-center">
+  <span class="input-group-addon" id="sizing-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+</div>
+      <p>Enter Date: <input type = "text" id = "datepicker" style="background-color:yellow"></p>
+      <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+      <button id="submit" type="button" class="btn btn-primary btn-lg px-4 gap-3">Submit</button>
+
+    </div>
+  </div>
+</div>
+
+   </body>
+   <!-- Javascript -->
+   <script>
+      $(function() {
+         $( "#datepicker" ).datepicker();
+         $( "#datepicker" ).datepicker("show");
+      });
+
+      $(document).ready(function () {
+        $("#submit").click(function () {
+           $.post("/getBranchInfo",
+              {
+                 date: document.getElementById("datepicker").value,
+                 branch : "Elm Street"
+              });
+        });
+     });
+   </script>
+</html>
